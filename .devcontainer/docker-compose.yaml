@@ -1,0 +1,20 @@
+version: '3.8'
+
+services:
+  latex-dtu-dk-app-main:
+    image: dtuait/latex-dtu-dk-app-main:myversion-1.0.3
+    # build:
+    #   context: ..
+    #   dockerfile: .devcontainer/Dockerfile
+    command: bash -c "chown -R dockeruser:dockeruser /usr/src/project && /bin/bash"
+    stdin_open: true  # Keep stdin open to allow interactive commands
+    tty: true         # Allocate a pseudo-TTY for the container
+    volumes:
+      - ..:/usr/src/project:cached
+    environment:
+      - DOCKERUSER_UID=65000
+      - DOCKERUSER_GID=65000
+      - DOCKERUSER_NAME=dockeruser
+      - DOCKERUSER_PASSWORD=dockeruser
+      - DOCKERUSER_HOME=/home/dockeruser
+      - DOCKERUSER_SHELL=/bin/bash

@@ -1,0 +1,20 @@
+# run this to get into the terminal for testing
+# docker compose run --service-ports --rm test-my-docker-project-app-main bash
+services:
+  latex-dtu-dk-app-main:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    user: "${HOST_UID}:${HOST_GID}"  # Set user to dockeruser
+    command: sleep infinity
+    stdin_open: true  # Keep stdin open to allow interactive commands
+    tty: true  # Allocate a pseudo-TTY for the container
+    volumes:
+      - ..:/usr/src/project
+    environment:
+      - HOST_UID=${DOCKERUSER_UID}
+      - HOST_GID=${DOCKERUSER_GID}
+      - DOCKERUSER_NAME=${DOCKERUSER_NAME}
+      - DOCKERUSER_PASSWORD=${DOCKERUSER_PASSWORD}
+      - DOCKERUSER_HOME=${DOCKERUSER_HOME}
+      - DOCKERUSER_SHELL=${DOCKERUSER_SHELL}

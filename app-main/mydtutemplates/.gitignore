@@ -1,0 +1,8 @@
+# Ignore everything
+*
+
+# Except specific files
+!doc_dtucover.tex
+!doc_dtuletter.tex
+!helloworld.txt
+!.gitignore

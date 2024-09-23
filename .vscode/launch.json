@@ -1,0 +1,20 @@
+{
+    "configurations": [
+        {
+            "name": "Python: Current File",
+            "type": "debugpy",
+            "request": "launch",
+            "program": "${file}",
+            "console": "integratedTerminal"
+        },
+        {
+            "name": "Python: Debug test",
+            "type": "debugpy",
+            "request": "launch",
+            "program": "${workspaceFolder}/app-main/debug-test.py",
+            "console": "integratedTerminal",
+            "django": true,
+            "justMyCode": true
+        }
+]
+}

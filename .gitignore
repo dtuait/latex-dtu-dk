@@ -1,0 +1,17 @@
+# Byte-compiled / optimized / DLL files
+*.env
+*.old
+*.log
+*.bak
+.bashrc
+.ssh/
+.vscode-server/
+.gitconfig
+.cache/
+.gnupg/
+.bash_history
+.dotnet/
+.devcontainer/.docker-image-builder-archive/__owner__dtuait__project__latex-dtu-dk__image__app-main__tag__myversion-1.0.0
+.devcontainer/.docker-image-builder-archive/__owner__dtuait__project__latex-dtu-dk__image__app-main__tag__myversion-1.0.1
+.devcontainer/.docker-image-builder-archive/__owner__dtuait__project__latex-dtu-dk__image__app-main__tag__myversion-1.0.2
+app-main/output/
