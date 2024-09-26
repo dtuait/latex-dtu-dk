@@ -47,6 +47,10 @@ RUN apt-get update && \
     gosu \
     locales \
     lcdf-typetools \
+    texlive-lang-other \
+    texlive-fonts-recommended \
+    texlive-fonts-extra \
+    texlive-lang-european \
     && rm -rf /var/lib/apt/lists/*
 
 # Install dependencies
@@ -93,7 +97,7 @@ ENV LANGUAGE=en_US.UTF-8
 WORKDIR /usr/src/project
 
 # Copy the DTU templates into the container
-COPY ../../dtutemplates/tex/latex/ /usr/local/share/texmf/tex/latex/
+COPY dtutemplates/tex/latex/ /usr/local/share/texmf/tex/latex/
 
 # Update LaTeX filename database
 RUN mktexlsr
@@ -102,7 +106,7 @@ RUN mktexlsr
 # COPY app-main/ /usr/src/project/app-main/
 
 # Copy the entrypoint script
-COPY entrypoint.sh /usr/local/bin/entrypoint.sh
+COPY ./entrypoint.sh /usr/local/bin/entrypoint.sh
 RUN chmod +x /usr/local/bin/entrypoint.sh
 
 # Set the entrypoint to our custom script

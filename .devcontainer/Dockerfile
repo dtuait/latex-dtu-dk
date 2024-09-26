@@ -46,7 +46,46 @@ RUN apt-get update && \
     sudo \
     gosu \
     locales \
+    lcdf-typetools \
+    texlive-lang-other \
+    texlive-fonts-recommended \
+    texlive-fonts-extra \
+    texlive-lang-european \
     && rm -rf /var/lib/apt/lists/*
+
+# Install dependencies
+RUN apt-get update && \
+    apt-get install -y \
+    wget \
+    perl \
+    xzdec \
+    tar \
+    make \
+    git \
+    wget \
+    unzip \
+    locales \
+    xfonts-utils \
+    fontconfig \
+    ttf-mscorefonts-installer \
+    && rm -rf /var/lib/apt/lists/*
+
+
+RUN apt-get update && \
+apt-get install -y \
+wget \
+perl \
+xzdec \
+tar \
+make \
+git \
+wget \
+unzip \
+locales \
+xfonts-utils \
+fontconfig \
+ttf-mscorefonts-installer \
+&& rm -rf /var/lib/apt/lists/*
 
 # Set up locales
 RUN locale-gen en_US.UTF-8
@@ -58,16 +97,16 @@ ENV LANGUAGE=en_US.UTF-8
 WORKDIR /usr/src/project
 
 # Copy the DTU templates into the container
-COPY app-main/dtutemplates/tex/latex/ /usr/local/share/texmf/tex/latex/
+COPY ./dtutemplates/tex/latex/ /usr/local/share/texmf/tex/latex/
 
 # Update LaTeX filename database
 RUN mktexlsr
 
 # Copy your LaTeX files into the working directory
-COPY app-main/ /usr/src/project/app-main/
+# COPY app-main/ /usr/src/project/app-main/
 
 # Copy the entrypoint script
-COPY .devcontainer/entrypoint.sh /usr/local/bin/entrypoint.sh
+COPY ./entrypoint.sh /usr/local/bin/entrypoint.sh
 RUN chmod +x /usr/local/bin/entrypoint.sh
 
 # Set the entrypoint to our custom script
