@@ -1,1 +1,1 @@
-latexmk -pdf -output-directory=/usr/src/project/app-main/output doc_dtuletter.tex
+latexmk -pdf -output-directory=/usr/src/project/app-main/output dtubase_kravspecifikation.tex
